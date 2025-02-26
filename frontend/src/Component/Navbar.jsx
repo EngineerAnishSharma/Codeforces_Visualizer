@@ -1,67 +1,92 @@
-import React from 'react';
-import { Button, Typography, Grid, Hidden } from '@mui/material';
-import { Link } from 'react-router-dom';
+import React, { useState } from "react";
+import {
+  AppBar,
+  Toolbar,
+  Typography,
+  Button,
+  IconButton,
+  Drawer,
+  List,
+  ListItem,
+  ListItemText,
+  useMediaQuery,
+} from "@mui/material";
+import MenuIcon from "@mui/icons-material/Menu";
+import { Link } from "react-router-dom";
+import { useTheme } from "@mui/material/styles";
 
-const styles = {
-    navbar: {
-        backgroundColor: '#6f6f6f',
-        height: '50px',
-        display: 'flex',
-        justifyContent: 'space-between',
-        alignItems: 'center',
-        padding: '0 20px',
-        color: '#fff',
-    },
-    menu: {
-        listStyleType: 'none',
-        display: 'flex',
-        margin: 0,
-        padding: 0,
-    },
-    menuItem: {
-        marginLeft: '20px',
-    },
-    link: {
-        textDecoration: 'none',
-        color: '#fff',
-    },
-};
+const menuItems = [
+  { label: "Single User", path: "/" },
+  { label: "Compare", path: "/compare" },
+  { label: "AI Study", path: "/ai-study" },
+  { label: "Community", path: "/community" },
+];
 
 const Navbar = () => {
-    return (
-        <nav style={styles.navbar}>
-            <Grid container alignItems="center">
-                <Grid item xs={6} sm={9}>
-                    <Button style={styles.link} component={Link} to="/">
-                        <Typography fontSize={{ xs: '15px', md: '25px' }} fontWeight={700}>
-                            VisualForces
-                        </Typography>
-                    </Button>
-                </Grid>
-                <Grid item xs={6} sm={3}>
-                    <Hidden xsDown>
-                        <ul style={styles.menu}>
-                            <li style={styles.menuItem}>
-                                <Link to="/" style={styles.link}>
-                                    Home
-                                </Link>
-                            </li>
-                            <li style={styles.menuItem}>
-                                <Link to="/contact" style={styles.link}>
-                                    Contact
-                                </Link>
-                            </li>
-                            <li style={styles.menuItem}>
-                                <Link to="/future" style={styles.link}>
-                                    Future
-                                </Link>
-                            </li>
-                        </ul>
-                    </Hidden>
-                </Grid>
-            </Grid>
-        </nav>
-    );
+  const [drawerOpen, setDrawerOpen] = useState(false);
+  const theme = useTheme();
+  const isMobile = useMediaQuery(theme.breakpoints.down("md")); // Detect screen size
+
+  return (
+    <AppBar position="static" sx={{ backgroundColor: "#2c3e50", padding: "5px 0" }}>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        {/* Brand Name */}
+        <Typography variant="h5" fontWeight={700} sx={{ color: "#fff" }}>
+          CF Visualizer
+        </Typography>
+
+        {/* Desktop Menu */}
+        {!isMobile && (
+          <div style={{ display: "flex", gap: "20px" }}>
+            {menuItems.map((item) => (
+              <Button
+                key={item.label}
+                color="inherit"
+                component={Link}
+                to={item.path}
+                sx={{
+                  fontWeight: 600,
+                  textTransform: "none",
+                  "&:hover": { color: "#f39c12" },
+                }}
+              >
+                {item.label}
+              </Button>
+            ))}
+          </div>
+        )}
+
+        {/* Mobile Menu Icon */}
+        {isMobile && (
+          <IconButton
+            edge="end"
+            color="inherit"
+            aria-label="menu"
+            onClick={() => setDrawerOpen(true)}
+          >
+            <MenuIcon />
+          </IconButton>
+        )}
+      </Toolbar>
+
+      {/* Mobile Drawer */}
+      <Drawer anchor="right" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
+        <List sx={{ width: 200 }}>
+          {menuItems.map((item) => (
+            <ListItem
+              button
+              key={item.label}
+              component={Link}
+              to={item.path}
+              onClick={() => setDrawerOpen(false)}
+            >
+              <ListItemText primary={item.label} />
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
+    </AppBar>
+  );
 };
 
 export default Navbar;

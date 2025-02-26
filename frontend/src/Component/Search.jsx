@@ -70,28 +70,30 @@ const Search = () => {
             <Paper
                 component="form"
                 sx={{
-                    p: '2px 10px',
+                    p: '5px 15px',
                     display: 'flex',
-                    alignItems: 'center', // Center the content vertically
+                    alignItems: 'center',
                     width: '100%',
-                    maxWidth: '500px',
+                    maxWidth: { xs: '90%', sm: '500px' },
                     margin: '0 auto',
-                    position: 'relative', // Add relative positioning to the Paper component
+                    position: 'relative',
+                    borderRadius: '30px',
+                    boxShadow: 3,
+                    backgroundColor: '#f5f5f5',
                 }}
                 onSubmit={handleSubmit}
             >
-                <IconButton type="button" sx={{ p: '10px' }} aria-label="search">
-                    {/* <AccountCircleIcon fontSize='large' /> */}
+                <IconButton type="button" sx={{ p: '10px', color: '#555' }} aria-label="info">
                     <AlertMessage />
                 </IconButton>
                 <InputBase
-                    sx={{ ml: 1, flex: 1 }}
+                    sx={{ ml: 1, flex: 1, fontSize: '16px' }}
                     placeholder="Search User"
                     inputProps={{ 'aria-label': 'search user' }}
                     value={inputValue}
                     onChange={handleInputChange}
                 />
-                <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+                <IconButton type="submit" sx={{ p: '10px', color: '#007bff' }} aria-label="search">
                     <SearchIcon fontSize='large' />
                 </IconButton>
             </Paper>

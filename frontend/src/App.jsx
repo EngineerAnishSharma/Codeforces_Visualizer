@@ -2,12 +2,10 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Navbar from './Component/Navbar';
 import Search from './Component/Search';
-import FutureScope from './Component/FutureScope';
-import Contact from './Component/Contact';
 import SplitScreen from './Content/UserProfile/Split';
 import ExportAll from './Charts/ExportAll';
-import Footer from './Component/Footer';
 import { Toaster } from 'react-hot-toast';
+import Compare from './Component/Compare';
 
 function App() {
   return (
@@ -15,18 +13,16 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Routes>
-          <Route exact path="/future" element={<FutureScope />} />
-          <Route exact path="/contact" element={<Contact />} />
-          <Route path="/" element={<Home />} />
+          <Route exact path="/compare" element={<Compare />} />
+          <Route path="/" element={<SingleUser />} />
         </Routes>
       </BrowserRouter>
       <Toaster />
-      <Footer />
     </div>
   );
 }
 
-function Home() {
+function SingleUser() {
   return (
     <>
       <Search />
