@@ -60,44 +60,39 @@ const Search = () => {
     };
 
     return (
-        <Box
-            display='flex'
-            alignItems='center'
-            justifyContent='center'
-            paddingY='20px'
-            width='100%'
-        >
-            <Paper
-                component="form"
-                sx={{
-                    p: '5px 15px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    width: '100%',
-                    maxWidth: { xs: '90%', sm: '500px' },
-                    margin: '0 auto',
-                    position: 'relative',
-                    borderRadius: '30px',
-                    boxShadow: 3,
-                    backgroundColor: '#f5f5f5',
-                }}
-                onSubmit={handleSubmit}
-            >
-                <IconButton type="button" sx={{ p: '10px', color: '#555' }} aria-label="info">
-                    <AlertMessage />
-                </IconButton>
-                <InputBase
-                    sx={{ ml: 1, flex: 1, fontSize: '16px' }}
-                    placeholder="Search User"
-                    inputProps={{ 'aria-label': 'search user' }}
-                    value={inputValue}
-                    onChange={handleInputChange}
-                />
-                <IconButton type="submit" sx={{ p: '10px', color: '#007bff' }} aria-label="search">
-                    <SearchIcon fontSize='large' />
-                </IconButton>
-            </Paper>
-        </Box>
+        <>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                <Typography variant="h4" component="h1" gutterBottom>
+                    Search for a User
+                </Typography>
+            </div>
+            <div style={{ display: 'flex', justifyContent: 'center', marginTop: '20px' }}>
+                <form onSubmit={handleSubmit}>
+                    <Paper
+                        component="div"
+                        sx={{
+                            p: '2px 4px',
+                            display: 'flex',
+                            alignItems: 'center',
+                            width: 400,
+                        }}
+                    >
+                        <InputBase
+                            sx={{ ml: 1, flex: 1 }}
+                            placeholder="Search"
+                            inputProps={{ 'aria-label': 'search' }}
+                            value={inputValue}
+                            onChange={handleInputChange}
+                        />
+                        <IconButton type="submit" sx={{ p: '10px' }} aria-label="search">
+                            <SearchIcon />
+                        </IconButton>
+                        <AlertMessage />
+                    </Paper>
+                </form>
+            </div>
+        </>
+
     );
 };
 
