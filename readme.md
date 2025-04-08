@@ -25,7 +25,33 @@ Codeforces Visualizer is a web-based tool designed to help competitive programme
     ```bash
     cd Codeforces_Visualizer
     ```
-3. Follow the setup instructions in the `INSTALL.md` file.
+3. Set up the backend:
+    - Navigate to the `backend` directory:
+        ```bash
+        cd backend
+        ```
+    - Install dependencies:
+        ```bash
+        npm install
+        ```
+    - Start the backend server:
+        ```bash
+        npm start
+        ```
+4. Set up the frontend:
+    - Navigate to the `frontend` directory:
+        ```bash
+        cd ../frontend
+        ```
+    - Install dependencies:
+        ```bash
+        npm install
+        ```
+    - Start the frontend development server:
+        ```bash
+        npm start
+        ```
+5. Follow additional setup instructions in the `INSTALL.md` file if necessary.
 
 ## Contributing
 
