@@ -19,7 +19,6 @@ const menuItems = [
   { label: "Single User", path: "/" },
   { label: "Compare", path: "/compare" },
   { label: "AI Study", path: "/ai-study" },
-  { label: "Community", path: "/community" },
 ];
 
 const Navbar = () => {
