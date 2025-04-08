@@ -1,6 +1,8 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const connectDB = require('./models/config');
+const cors = require('cors');
+
 const userRoutes = require('./routes/user');
 const userInfoRoutes = require('./routes/userInfo'); // Assuming you have this route file
 
@@ -8,7 +10,7 @@ dotenv.config();
 connectDB();
 
 const app = express();
-
+app.use(cors());
 app.use(express.json());
 
 app.use('/api/users', userRoutes);
