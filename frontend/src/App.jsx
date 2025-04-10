@@ -23,14 +23,19 @@ function App() {
     </div>
   );
 }
-
 function SingleUser() {
   return (
-    <>
+    <div
+      style={{
+        minHeight: "100vh",
+        background: "linear-gradient(135deg, #f3e5f5, #e0e0e0)",
+        paddingBottom: "2rem",
+      }}
+    >
       <Search />
       <SplitScreen />
       <ExportAll />
-    </>
+    </div>
   );
 }
 

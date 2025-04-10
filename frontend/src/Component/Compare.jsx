@@ -1,9 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { Alert, AlertTitle } from '@material-ui/lab';
-import { Grid, Button, TextField} from '@material-ui/core';
+import { Grid, Button, TextField } from '@material-ui/core';
 
-import { CompareUserInfo, CompareContestInfo, CompareContestRatingGraph, CompareProblemIndexGraph, CompareProblemRatingGraph, CompareSubmissionsGraph, CompareCommonContestsChart, CompareCommonContestsTable} from '../Compare';
+import { CompareUserInfo, CompareContestInfo, CompareContestRatingGraph, CompareProblemIndexGraph, CompareProblemRatingGraph, CompareSubmissionsGraph, CompareCommonContestsChart, CompareCommonContestsTable } from '../Compare';
 import styles from './Compare.module.css';
 
 const Compare = () => {
@@ -35,9 +35,9 @@ const Compare = () => {
     }
 
     function renderData() {
-        
+
         // if(userInfo1 && username1 === userInfo1.handle && userInfo2 && username2 === userInfo2.handle){
-        if(userInfo1 && userInfo2){
+        if (userInfo1 && userInfo2) {
             return (
                 <>
                     <div className={styles.narrowOuter}>
@@ -88,7 +88,7 @@ const Compare = () => {
                 </>
             )
         }
-        
+
     }
 
     function renderError() {
@@ -148,19 +148,28 @@ const Compare = () => {
             setUserSubmissions2(user2);
         }
 
-        if(username1 !== '' && username2 !== ''){
+        if (username1 !== '' && username2 !== '') {
             fetchData();
         }
 
     }, [username1, username2]);
 
     return (
-        <div>
-            <form className={styles.form} noValidate autoComplete="on" onSubmit={handleSubmit} >
+        <div
+            style={{
+                minHeight: '100vh',
+                background: 'linear-gradient(135deg, #e3f2fd, #fce4ec)', // pastel blue to pink
+                paddingBottom: '2rem',
+                paddingTop: '2rem',
+            }}
+        >
+            <h1 style={{ textAlign: 'center', color: '#4a148c', marginBottom: '1.5rem', fontWeight: 600 }}>
+                Compare Codeforces Users
+            </h1>
+            <form className={styles.form} noValidate autoComplete="on" onSubmit={handleSubmit}>
                 <div className={styles.flexContainer}>
                     <TextField
                         className={styles.textInput}
-                        //onChange={(e) => setCurrname1(e.target.value)}
                         label="Codeforces Username 1"
                         variant="outlined"
                         color="primary"
@@ -169,7 +178,6 @@ const Compare = () => {
                     />
                     <TextField
                         className={styles.textInput}
-                        //onChange={(e) => setCurrname2(e.target.value)}
                         label="Codeforces Username 2"
                         variant="outlined"
                         color="primary"
@@ -181,13 +189,22 @@ const Compare = () => {
                         type="submit"
                         color="secondary"
                         variant="contained"
-                    > Submit </Button>
+                    >
+                        Compare
+                    </Button>
                 </div>
-
             </form>
-            {(username1 !== '' && username2 !== '') ? (error ? renderError() : (username1===username2) ? renderWarning() : renderData()) : null}
+
+            {(username1 !== '' && username2 !== '')
+                ? (error
+                    ? renderError()
+                    : (username1 === username2)
+                        ? renderWarning()
+                        : renderData())
+                : null}
         </div>
-    )
+    );
+
 }
 
 export default Compare;
