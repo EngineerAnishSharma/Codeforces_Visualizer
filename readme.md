@@ -2,6 +2,13 @@
 
 Codeforces Visualizer is a web-based tool designed to help competitive programmers analyze and improve their performance on Codeforces. It provides insightful visualizations and comparisons to enhance your problem-solving skills.
 
+## Demo
+
+![Codeforces Visualizer](https://github.com/user-attachments/assets/412b7d82-31f7-4dc4-83ad-26329ec741d5)
+
+<iframe width="560" height="315" src="https://youtu.be/9AFm602kRfo" 
+frameborder="0" allowfullscreen></iframe>
+
 ## Features
 
 - **Single User Analysis**: View detailed statistics and performance trends for a single Codeforces user.
